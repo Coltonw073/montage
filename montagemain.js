@@ -446,8 +446,10 @@ function rvid() {
   plst.splice(plst.indexOf(pid), 1)
   document.getElementById('title').innerHTML = 'Generating Montage...'
   document.getElementById('player').innerHTML = ''
-  document.getElementById('mainimg').removeAttribute
+  document.getElementById('mainimg').removeAttribute('src')
   document.getElementById('mainimg').style.visibility = 'hidden'
+  document.getElementById('loadingbar').style.visibility = 'visible'
+  document.getElementById('barin').style.animationName = 'test'
   setTimeout(function() {
     document.getElementById('title').innerHTML = vidnm
     document.getElementById('player').innerHTML = pnm
@@ -455,6 +457,12 @@ function rvid() {
     document.getElementById('mainimg').style.visibility = 'visible'
     setTimeout(function() {
       window.open(vurl, '_blank');
-    }, 500);
-  }, 500);
+      document.getElementById('barin').style.animationName = null;
+      document.getElementById('loadingbar').style.visibility = 'hidden';
+      document.getElementById('title').innerHTML = '';
+      document.getElementById('player').innerHTML = '';
+      document.getElementById('mainimg').removeAttribute('src');
+      document.getElementById('mainimg').style.visibility = 'hidden';
+    }, 2000);
+  }, 1000);
 }
